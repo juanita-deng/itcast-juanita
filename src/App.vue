@@ -1,6 +1,6 @@
 <template>
 	<div>
-		根组件
+		<router-view></router-view>
 	</div>
 </template>
 

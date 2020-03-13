@@ -17,6 +17,8 @@
     "@vue/cli-service": "~4.2.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "lib-flexible": "^0.3.2",
+    "postcss-px2rem": "^0.3.0",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
