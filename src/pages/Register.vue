@@ -1,6 +1,6 @@
 <template>
-	<div>
-		根组件
+	<div class="register">
+		注册组件
 	</div>
 </template>
 
