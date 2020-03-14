@@ -1,5 +1,5 @@
 <template>
-	<div class="hm-button">
+	<div class="hm-button" @click="$emit('clickBtn')">
 		<slot></slot>
 	</div>
 </template>
