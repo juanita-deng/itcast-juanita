@@ -37,14 +37,19 @@ export default {
 	methods: {
 		inputFn(e) {
 			console.log(e.target.value);
-			this.$emit('input', e.target.value);
-
+			const value = e.target.value;
+			this.$emit('input', value);
+			this.validate(value);
+		},
+		validate(value) {
 			//表单校验
 			if (this.rule) {
-				if (this.rule.test(e.target.value)) {
+				if (this.rule.test(value)) {
 					this.status = 'success';
+					return true;
 				} else {
 					this.status = 'error';
+					return false;
 				}
 				console.log(this.status);
 			}

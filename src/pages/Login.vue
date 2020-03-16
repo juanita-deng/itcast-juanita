@@ -9,6 +9,7 @@
 			v-model="username"
 			:rule="/^1\d{4,10}$/"
 			message="用户名不正确"
+			ref="username"
 		></hm-input>
 		<hm-input
 			type="password"
@@ -16,6 +17,7 @@
 			v-model="password"
 			:rule="/^\d{3,12}$/"
 			message="密码不正确"
+			ref="password"
 		></hm-input>
 
 		<hm-button @clickBtn="login">登录</hm-button>
@@ -24,9 +26,22 @@
 
 <script>
 export default {
+	data() {
+		return {
+			username: '',
+			password: ''
+		};
+	},
 	methods: {
 		login() {
 			console.log('登陆了');
+			//先进行校验，校验通过再发送Ajax请求
+			const result1 = this.$refs.username.validate(this.username);
+			const result2 = this.$refs.password.validate(this.password);
+			console.log(result1, result2);
+			if (!result1 || !result2) {
+				return;
+			}
 
 			this.$axios({
 				url: '/login',
@@ -38,19 +53,15 @@ export default {
 			}).then(res => {
 				console.log(res);
 				if (res.data.statusCode === 200) {
-					alert(res.data.message);
+					// alert(res.data.message);
+					this.$toast.success(res.data.message);
 					this.$router.push('/user');
 				} else {
-					alert(res.data.message);
+					// alert(res.data.message);
+					this.$toast.fail(res.data.message);
 				}
 			});
 		}
-	},
-	data() {
-		return {
-			username: '',
-			password: ''
-		};
 	}
 };
 </script>
