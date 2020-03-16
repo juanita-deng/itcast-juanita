@@ -36,7 +36,7 @@ export default {
 	},
 	methods: {
 		inputFn(e) {
-			console.log(e.target.value);
+			// console.log(e.target.value);
 			const value = e.target.value;
 			this.$emit('input', value);
 			this.validate(value);
@@ -60,7 +60,7 @@ export default {
 
 <style lang="less" scoped>
 .hm-input {
-	margin: 30px;
+	margin: 0 30px;
 	height: 50px;
 	input {
 		border: none;
