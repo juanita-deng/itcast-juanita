@@ -16,4 +16,13 @@ const router = new VueRouter({
 	]
 });
 
+//注册全局的导航守卫
+router.beforeEach(function(to, from, next) {
+	const token = localStorage.getItem('token');
+	if (to.path === '/user' && !token) {
+		next('/login');
+	} else {
+		next();
+	}
+});
 export default router;

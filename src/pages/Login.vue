@@ -61,13 +61,19 @@ export default {
 				}
 			}).then(res => {
 				console.log(res);
-				if (res.data.statusCode === 200) {
-					// alert(res.data.message);
-					this.$toast.success(res.data.message);
+				const { statusCode, message, data } = res.data;
+				if (statusCode === 200) {
+					// alert(message);
+					this.$toast.success(message);
+
+					//登录状态保持
+					localStorage.setItem('token', data.token);
+					localStorage.setItem('user_id', data.user.id);
+
 					this.$router.push('/user');
 				} else {
-					// alert(res.data.message);
-					this.$toast.fail(res.data.message);
+					// alert(message);
+					this.$toast.fail(message);
 				}
 			});
 		}
