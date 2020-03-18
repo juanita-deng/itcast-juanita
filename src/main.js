@@ -7,16 +7,31 @@ import 'lib-flexible'; //rem伸缩布局库
 
 //vant-ui处理
 //按需导入
-import { Toast, Dialog } from 'vant';
+import {
+	Toast,
+	Dialog,
+	Field,
+	Radio,
+	RadioGroup,
+	cell,
+	CellGroup,
+	Uploader
+} from 'vant';
 Vue.use(Toast);
 Vue.use(Dialog);
+Vue.use(Field);
+Vue.use(Radio);
+Vue.use(RadioGroup);
+Vue.use(cell);
+Vue.use(CellGroup);
+Vue.use(Uploader);
 
 //axios处理
 import axios from 'axios';
-Vue.prototype.$axios = axios;
+
 axios.defaults.baseURL = 'http://localhost:3000';
 axios.interceptors.response.use(res => {
-	console.log(res);
+	// console.log(res);
 	const { message, statusCode } = res.data;
 	if (statusCode === 401 && message === '用户信息验证失败') {
 		router.push('/login');
@@ -26,6 +41,14 @@ axios.interceptors.response.use(res => {
 	}
 	return res;
 });
+//请求拦截器 设置统一的token
+axios.interceptors.request.use(config => {
+	const token = localStorage.getItem('token');
+	config.headers.Authorization = token;
+	return config;
+});
+Vue.prototype.$axios = axios;
+
 // -----全局组件----------------
 import HmHeader from './components/Hm-Header';
 import HmLogo from './components/Hm-Logo';

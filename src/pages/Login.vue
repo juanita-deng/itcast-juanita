@@ -37,17 +37,17 @@ export default {
 		};
 	},
 	created() {
-		console.log(this.$route);
+		// console.log(this.$route);
 		this.username = this.$route.params.username;
 		this.password = this.$route.params.password;
 	},
 	methods: {
 		login() {
-			console.log('登陆了');
+			// console.log('登陆了');
 			//先进行校验，校验通过再发送Ajax请求
 			const result1 = this.$refs.username.validate(this.username);
 			const result2 = this.$refs.password.validate(this.password);
-			console.log(result1, result2);
+			// console.log(result1, result2);
 			if (!result1 || !result2) {
 				return;
 			}
@@ -60,7 +60,7 @@ export default {
 					password: this.password
 				}
 			}).then(res => {
-				console.log(res);
+				// console.log(res);
 				const { statusCode, message, data } = res.data;
 				if (statusCode === 200) {
 					// alert(message);

@@ -4,9 +4,9 @@
 			class="header-left iconfont iconjiantou2"
 			@click="$router.go(-1)"
 		></div>
-		<div class="title">
+		<h3 class="title">
 			<slot></slot>
-		</div>
+		</h3>
 		<div class="header-right"></div>
 	</div>
 </template>
