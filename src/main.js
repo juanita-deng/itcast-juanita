@@ -15,7 +15,9 @@ import {
 	RadioGroup,
 	cell,
 	CellGroup,
-	Uploader
+	Uploader,
+	Button,
+	List
 } from 'vant';
 Vue.use(Toast);
 Vue.use(Dialog);
@@ -25,6 +27,8 @@ Vue.use(RadioGroup);
 Vue.use(cell);
 Vue.use(CellGroup);
 Vue.use(Uploader);
+Vue.use(Button);
+Vue.use(List);
 
 //axios处理
 import axios from 'axios';

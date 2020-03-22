@@ -41,7 +41,7 @@ export default {
 		};
 	},
 	methods: {
-		register() {
+		async register() {
 			console.log('注册了');
 			//表单验证成功就去发送ajax请求
 			const result1 = this.$refs.username.validate(this.username);
@@ -50,7 +50,7 @@ export default {
 			if (!result1 || !result2 || !result3) {
 				return;
 			}
-			this.$axios({
+			const res = await this.$axios({
 				url: '/register',
 				method: 'post',
 				data: {
@@ -58,21 +58,24 @@ export default {
 					password: this.password,
 					nickname: this.nickname
 				}
-			}).then(res => {
-				console.log(res.data);
-				if (res.data.statusCode === 200) {
-					this.$toast.success(res.data.message);
-					this.$router.push({
-						name: 'login',
-						params: {
-							username: this.username,
-							password: this.password
-						}
-					});
-				} else {
-					this.$toast.fail(res.data.message);
-				}
 			});
+			// .then(res => {
+
+			console.log(res.data);
+			if (res.data.statusCode === 200) {
+				this.$toast.success(res.data.message);
+				this.$router.push({
+					name: 'login',
+					params: {
+						username: this.username,
+						password: this.password
+					}
+				});
+			} else {
+				this.$toast.fail(res.data.message);
+			}
+
+			// });
 		}
 	}
 };

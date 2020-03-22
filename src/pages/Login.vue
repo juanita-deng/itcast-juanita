@@ -42,7 +42,7 @@ export default {
 		this.password = this.$route.params.password;
 	},
 	methods: {
-		login() {
+		async login() {
 			// console.log('登陆了');
 			//先进行校验，校验通过再发送Ajax请求
 			const result1 = this.$refs.username.validate(this.username);
@@ -52,30 +52,34 @@ export default {
 				return;
 			}
 
-			this.$axios({
+			const res = await this.$axios({
 				url: '/login',
 				method: 'post',
 				data: {
 					username: this.username,
 					password: this.password
 				}
-			}).then(res => {
-				// console.log(res);
-				const { statusCode, message, data } = res.data;
-				if (statusCode === 200) {
-					// alert(message);
-					this.$toast.success(message);
-
-					//登录状态保持
-					localStorage.setItem('token', data.token);
-					localStorage.setItem('user_id', data.user.id);
-
-					this.$router.push('/user');
-				} else {
-					// alert(message);
-					this.$toast.fail(message);
-				}
 			});
+
+			// .then(res => {
+
+			// console.log(res);
+			const { statusCode, message, data } = res.data;
+			if (statusCode === 200) {
+				// alert(message);
+				this.$toast.success(message);
+
+				//登录状态保持
+				localStorage.setItem('token', data.token);
+				localStorage.setItem('user_id', data.user.id);
+
+				this.$router.push('/user');
+			} else {
+				// alert(message);
+				this.$toast.fail(message);
+			}
+
+			// });
 		}
 	}
 };
