@@ -17,7 +17,9 @@ import {
 	CellGroup,
 	Uploader,
 	Button,
-	List
+	List,
+	Tab,
+	Tabs
 } from 'vant';
 Vue.use(Toast);
 Vue.use(Dialog);
@@ -29,6 +31,8 @@ Vue.use(CellGroup);
 Vue.use(Uploader);
 Vue.use(Button);
 Vue.use(List);
+Vue.use(Tab);
+Vue.use(Tabs);
 
 //axios处理
 import axios from 'axios';
@@ -48,7 +52,9 @@ axios.interceptors.response.use(res => {
 //请求拦截器 设置统一的token
 axios.interceptors.request.use(config => {
 	const token = localStorage.getItem('token');
-	config.headers.Authorization = token;
+	if (token) {
+		config.headers.Authorization = token;
+	}
 	return config;
 });
 Vue.prototype.$axios = axios;
@@ -59,12 +65,15 @@ import HmLogo from './components/Hm-Logo';
 import HmButton from './components/Hm-Button';
 import HmInput from './components/Hm-Input.vue';
 import HmNavBar from './components/hm-navbar.vue';
+import HmPost from './components/Hm-post.vue';
 
 Vue.component('hm-header', HmHeader);
 Vue.component('hm-logo', HmLogo);
 Vue.component('hm-button', HmButton);
 Vue.component('hm-input', HmInput);
 Vue.component('hm-navbar', HmNavBar);
+Vue.component('hm-navbar', HmNavBar);
+Vue.component('hm-post', HmPost);
 
 //--------全局过滤器
 import moment from 'moment';

@@ -1,7 +1,7 @@
 <template>
 	<div class="hm-collection">
 		<hm-header>我的收藏</hm-header>
-		<div class="list" v-for="item in list" :key="item.id">
+		<!-- <div class="list" v-for="item in list" :key="item.id">
 			<div class="left">
 				<div class="article">{{ item.title }}</div>
 				<div class="bottom">
@@ -12,7 +12,9 @@
 			<div class="right">
 				<img :src="item.cover[0].url" alt="" />
 			</div>
-		</div>
+		</div> -->
+		<!-- 封装的组件 -->
+		<hm-post v-for="item in list" :key="item.id" :article="item"></hm-post>
 	</div>
 </template>
 
@@ -28,6 +30,9 @@ export default {
 		// console.log(res);
 		const { statusCode, data } = res.data;
 		if (statusCode === 200) {
+			data.forEach(v => {
+				v.comment_length = v.comments.length;
+			});
 			this.list = data;
 			console.log(this.list);
 		}
@@ -36,7 +41,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.list {
+/* .list {
 	display: flex;
 	padding: 10px;
 	justify-content: space-between;
@@ -63,5 +68,5 @@ export default {
 		display: block;
 		object-fit: cover;
 	}
-}
+} */
 </style>
