@@ -92,7 +92,7 @@ export default {
 <style lang="less" scoped>
 .list {
 	border-bottom: 1px solid #ccc;
-	padding: 10px;
+	padding: 20px;
 	.time {
 		height: 30px;
 		line-height: 30px;
@@ -103,18 +103,18 @@ export default {
 		background-color: #dddddd;
 		padding: 10px;
 		div {
-			height: 30px;
-			line-height: 30px;
+			padding: 10px 0;
 			color: #666;
 			font-size: 14px;
+			word-break: break-all;
 		}
 	}
 	.comments,
 	.article {
-		height: 30px;
-		line-height: 30px;
+		padding: 10px 0;
 		font-size: 16px;
 		display: flex;
+		word-break: break-all;
 	}
 	.article {
 		& :nth-child(1) {

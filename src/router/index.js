@@ -12,6 +12,7 @@ import Comments from '../pages/Comments';
 import Collection from '../pages/Collection';
 import Home from '../pages/Home';
 import Search from '../pages/Search';
+import postDetail from '../pages/PostDetail.vue';
 
 const router = new VueRouter({
 	routes: [
@@ -24,7 +25,8 @@ const router = new VueRouter({
 		{ path: '/focus', component: Focus, name: 'focus' },
 		{ path: '/comments', component: Comments, name: 'comments' },
 		{ path: '/collection', component: Collection, name: 'collection' },
-		{ path: '/search', component: Search, name: 'search' }
+		{ path: '/search', component: Search, name: 'search' },
+		{ path: '/post-detail/:id', component: postDetail, name: 'post-detail' }
 	]
 });
 

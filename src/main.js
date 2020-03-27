@@ -66,6 +66,7 @@ import HmButton from './components/Hm-Button';
 import HmInput from './components/Hm-Input.vue';
 import HmNavBar from './components/hm-navbar.vue';
 import HmPost from './components/Hm-post.vue';
+import HmComments from './components/Hm-comments.vue';
 
 Vue.component('hm-header', HmHeader);
 Vue.component('hm-logo', HmLogo);
@@ -74,10 +75,24 @@ Vue.component('hm-input', HmInput);
 Vue.component('hm-navbar', HmNavBar);
 Vue.component('hm-navbar', HmNavBar);
 Vue.component('hm-post', HmPost);
+Vue.component('hm-comments', HmComments);
 
 //--------全局过滤器
 import moment from 'moment';
 Vue.filter('date', input => moment(input).format('YYYY-MM-DD'));
+Vue.filter('date2', input => {
+	const time = new Date(input);
+	const now = Date.now();
+	const hours = ((now - time) / 1000 / 60 / 60) | 0;
+	// console.log(hours);
+	if (hours < 1) {
+		return '1小时内';
+	} else if (hours < 24) {
+		return hours + '小时前';
+	} else {
+		return moment(input).format('YYYY-MM-DD HH:mm:ss');
+	}
+});
 
 Vue.config.productionTip = false;
 new Vue({

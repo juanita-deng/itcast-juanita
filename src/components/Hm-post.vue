@@ -1,5 +1,5 @@
 <template>
-	<div class="hm-post">
+	<div class="hm-post" @click="$router.push('/post-detail/' + article.id)">
 		<!-- 视频结构 -->
 		<div class="video-img-post" v-if="article.type === 2">
 			<div class="list">

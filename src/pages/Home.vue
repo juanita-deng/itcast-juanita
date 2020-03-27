@@ -76,6 +76,9 @@ export default {
 			// console.log(res);
 			const { statusCode, data } = res.data;
 			if (statusCode === 200) {
+				if (this.articleList.length > 0 && this.pageIndex === 1) {
+					this.articleList = []; //处理频繁切换文章列表报错的问题
+				}
 				// this.articleList = data;
 				this.articleList = [...this.articleList, ...data];
 				console.log(this.articleList);
