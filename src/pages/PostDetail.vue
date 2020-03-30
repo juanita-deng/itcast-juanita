@@ -96,6 +96,16 @@ export default {
 	created() {
 		this.getDetail();
 		this.getComments();
+
+		// this.$bus.$on('replys', async (id, nickname) => {
+		// 	//方法二:非父子通讯公交车
+		// 	console.log('从孙子组件floor接收到的评论的数据是', id, nickname);
+		// 	this.replyId = id;
+		// 	this.replyNickname = nickname;
+		// 	this.isShow = false;
+		// 	await this.$nextTick();
+		// 	this.$refs.textarea.focus();
+		// });
 	},
 	methods: {
 		async getDetail() {
@@ -203,6 +213,7 @@ export default {
 			}
 		},
 		async reply(id, nickname) {
+			//方法一:孙传爷
 			// console.log('从子组件接收到的评论的id是', id);
 			this.replyId = id;
 			this.replyNickname = nickname;

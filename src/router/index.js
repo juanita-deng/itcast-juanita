@@ -13,6 +13,7 @@ import Collection from '../pages/Collection';
 import Home from '../pages/Home';
 import Search from '../pages/Search';
 import postDetail from '../pages/PostDetail.vue';
+import tabManage from '../pages/TabManage.vue';
 
 const router = new VueRouter({
 	routes: [
@@ -26,7 +27,8 @@ const router = new VueRouter({
 		{ path: '/comments', component: Comments, name: 'comments' },
 		{ path: '/collection', component: Collection, name: 'collection' },
 		{ path: '/search', component: Search, name: 'search' },
-		{ path: '/post-detail/:id', component: postDetail, name: 'post-detail' }
+		{ path: '/post-detail/:id', component: postDetail, name: 'post-detail' },
+		{ path: '/tab-manage', component: tabManage, name: 'tab-manage' }
 	]
 });
 

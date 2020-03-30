@@ -19,7 +19,9 @@ import {
 	Button,
 	List,
 	Tab,
-	Tabs
+	Tabs,
+	Icon,
+	PullRefresh
 } from 'vant';
 Vue.use(Toast);
 Vue.use(Dialog);
@@ -33,6 +35,8 @@ Vue.use(Button);
 Vue.use(List);
 Vue.use(Tab);
 Vue.use(Tabs);
+Vue.use(Icon);
+Vue.use(PullRefresh);
 
 //axios处理
 import axios from 'axios';
@@ -93,6 +97,9 @@ Vue.filter('date2', input => {
 		return moment(input).format('YYYY-MM-DD HH:mm:ss');
 	}
 });
+//--------------------bus---------
+const bus = new Vue();
+Vue.prototype.$bus = bus;
 
 Vue.config.productionTip = false;
 new Vue({
