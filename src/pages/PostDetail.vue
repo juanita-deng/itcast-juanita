@@ -90,7 +90,7 @@ export default {
 			commentList: '',
 			replyId: '',
 			replyNickname: '',
-			content: ''
+			content: '',
 		};
 	},
 	created() {
@@ -144,8 +144,8 @@ export default {
 				this.$router.push({
 					name: 'login',
 					params: {
-						back: true
-					}
+						back: true,
+					},
 				});
 				this.$toast('请先登陆');
 				return;
@@ -164,8 +164,8 @@ export default {
 				this.$router.push({
 					name: 'login',
 					params: {
-						back: true
-					}
+						back: true,
+					},
 				});
 				this.$toast('请先登陆');
 				return;
@@ -184,8 +184,8 @@ export default {
 				this.$router.push({
 					name: 'login',
 					params: {
-						back: true
-					}
+						back: true,
+					},
 				});
 				this.$toast('请先登陆');
 				return;
@@ -228,8 +228,8 @@ export default {
 				method: 'post',
 				data: {
 					content: this.content,
-					parent_id: this.replyId
-				}
+					parent_id: this.replyId,
+				},
 			});
 			// console.log(res);
 			const { statusCode, message, data } = res.data;
@@ -241,8 +241,8 @@ export default {
 				this.getComments();
 				this.getDetail();
 			}
-		}
-	}
+		},
+	},
 };
 </script>
 

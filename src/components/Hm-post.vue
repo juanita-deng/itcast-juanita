@@ -54,7 +54,7 @@
 <script>
 export default {
 	props: {
-		article: Object
+		article: Object,
 	},
 	methods: {
 		getUrl(url) {
@@ -65,8 +65,8 @@ export default {
 			} else {
 				return this.$axios.defaults.baseURL + url;
 			}
-		}
-	}
+		},
+	},
 };
 </script>
 

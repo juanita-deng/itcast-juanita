@@ -4,6 +4,7 @@ import router from './router/index';
 import './styles/common.less';
 import './styles/iconfont.css';
 import 'lib-flexible'; //rem伸缩布局库
+import store from './store';
 
 //vant-ui处理
 //按需导入
@@ -21,7 +22,7 @@ import {
 	Tab,
 	Tabs,
 	Icon,
-	PullRefresh
+	PullRefresh,
 } from 'vant';
 Vue.use(Toast);
 Vue.use(Dialog);
@@ -42,7 +43,7 @@ Vue.use(PullRefresh);
 import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:3000';
-axios.interceptors.response.use(res => {
+axios.interceptors.response.use((res) => {
 	// console.log(res);
 	const { message, statusCode } = res.data;
 	if (statusCode === 401 && message === '用户信息验证失败') {
@@ -54,7 +55,7 @@ axios.interceptors.response.use(res => {
 	return res;
 });
 //请求拦截器 设置统一的token
-axios.interceptors.request.use(config => {
+axios.interceptors.request.use((config) => {
 	const token = localStorage.getItem('token');
 	if (token) {
 		config.headers.Authorization = token;
@@ -83,8 +84,8 @@ Vue.component('hm-comments', HmComments);
 
 //--------全局过滤器
 import moment from 'moment';
-Vue.filter('date', input => moment(input).format('YYYY-MM-DD'));
-Vue.filter('date2', input => {
+Vue.filter('date', (input) => moment(input).format('YYYY-MM-DD'));
+Vue.filter('date2', (input) => {
 	const time = new Date(input);
 	const now = Date.now();
 	const hours = ((now - time) / 1000 / 60 / 60) | 0;
@@ -103,6 +104,7 @@ Vue.prototype.$bus = bus;
 
 Vue.config.productionTip = false;
 new Vue({
-	render: h => h(App),
-	router
+	render: (h) => h(App),
+	router,
+	store,
 }).$mount('#app');
